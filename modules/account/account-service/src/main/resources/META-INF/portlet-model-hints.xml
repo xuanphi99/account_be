@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.dogoo.poc.account.model.AccountEntry">
+		<field name="uuid" type="String" />
+		<field name="accountId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="fullName" type="String" />
+		<field name="email" type="String" />
+		<field name="newUser" type="String" />
+		<field name="password" type="String" />
+		<field name="phone" type="String" />
+		<field name="departmentId" type="long" />
+		<field name="positionId" type="long" />
+		<field name="userIdMapping" type="int" />
+	</model>
+	<model name="com.dogoo.poc.account.model.CategoryEntry">
+		<field name="uuid" type="String" />
+		<field name="categoryId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="type" type="String" />
+		<field name="name" type="String" />
+		<field name="code" type="int" />
+		<field name="parentId" type="String" />
+	</model>
+</model-hints>

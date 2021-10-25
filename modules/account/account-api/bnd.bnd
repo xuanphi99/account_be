@@ -1,0 +1,10 @@
+Bundle-Name: account-api
+Bundle-SymbolicName: com.dogoo.poc.account.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.dogoo.poc.account.exception,\
+	com.dogoo.poc.account.model,\
+	com.dogoo.poc.account.service,\
+	com.dogoo.poc.account.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../account-service/service.xml
