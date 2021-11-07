@@ -1,0 +1,12 @@
+dependencies {
+	compile project(":modules:apps:accounts:account-api")
+	compile project(":modules:apps:data-items:data-item-service-builder:service-builder-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+}
+
+buildService {
+	apiDir = "../account-api/src/main/java"
+}
+
+group = "com.dogoo.account"

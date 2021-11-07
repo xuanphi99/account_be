@@ -1,0 +1,9 @@
+apiDir: "../account-rest-builder-api/src/main/java"
+apiPackagePath: "com.dogoo.poc.account"
+application:
+    baseURI: "/account-rest-builder"
+    className: "AccountRestBuilderApplication"
+    name: "AccountRestBuilder"
+author: "phidx"
+clientDir: "../account-rest-builder-client/src/main/java"
+testDir: "../account-rest-builder-test/src/testIntegration/java"

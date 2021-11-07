@@ -1,0 +1,341 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Swagger document API Account"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/dogoo"
+tags:
+  - name: "Account"
+    description: "Everything about your Accounts"
+    externalDocs:
+      description: "Find out more"
+      url: "http://swagger.io"
+
+schemes:
+  - "https"
+  - "http"
+paths:
+  /accounts:
+
+
+    post:
+      tags:
+        - "account"
+      summary: "Add a new account to the store"
+      description: ""
+      operationId: "addCcount"
+      consumes:
+        - "application/json"
+        - "application/xml"
+      produces:
+        - "application/xml"
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Account object that needs to be added to the store"
+          required: true
+          schema:
+            $ref: "#/definitions/Account"
+      responses:
+
+        "200":
+          description: "Add successful "
+          schema:
+            $ref: "#/definitions/Account"
+
+        "400":
+          $ref: "#/responses/BadRequestException"
+        "401":
+          $ref: "#/responses/NotAuthorizedException"
+        "403":
+          $ref: "#/responses/ForbiddenException"
+        "404":
+          $ref: "#/responses/NotFoundException"
+        "405":
+          $ref: "#/responses/NotAllowedException"
+        "406":
+          $ref: "#/responses/NotAcceptableException"
+        "415":
+          $ref: "#/responses/NotSupportedException"
+        "500":
+          $ref: "#/responses/InternalServerErrorException"
+        "503":
+          $ref: "#/responses/ServiceUnavailableException"
+      security:
+        - petstore_auth:
+            - "write:pets"
+            - "read:pets"
+    get:
+      tags:
+        - "account"
+      summary: "Get account to the store"
+      description: ""
+      operationId: "getAccounts"
+
+
+      consumes:
+        - "application/json"
+        - "application/xml"
+      produces:
+        - "application/xml"
+        - "application/json"
+
+      parameters:
+        - in: query
+          name: page
+          required: false
+          type: integer
+
+        - in: query
+          name: pageSize
+          required: false
+          type: integer
+
+      responses:
+
+        "200":
+          description: "Get successful "
+          schema:
+            $ref: "#/definitions/Page"
+
+        "400":
+          $ref: "#/responses/BadRequestException"
+        "401":
+          $ref: "#/responses/NotAuthorizedException"
+        "403":
+          $ref: "#/responses/ForbiddenException"
+        "404":
+          $ref: "#/responses/NotFoundException"
+        "405":
+          $ref: "#/responses/NotAllowedException"
+        "406":
+          $ref: "#/responses/NotAcceptableException"
+        "415":
+          $ref: "#/responses/NotSupportedException"
+        "500":
+          $ref: "#/responses/InternalServerErrorException"
+        "503":
+          $ref: "#/responses/ServiceUnavailableException"
+
+
+  /accounts/{accountId}:
+
+    parameters:
+      #   - $ref: "#/parameters/Request-Context"
+      - name: accountId
+        in: path
+        description: Account ID
+        required: true
+        type: integer
+        format : int64
+
+
+
+    get:
+      tags:
+        - account
+      summary : Get Detail Account
+      operationId : getDetailAccount
+
+      produces:
+        - "application/xml"
+        - "application/json"
+      responses :
+
+        "200":
+          description: "Get successful "
+          schema:
+            $ref: "#/definitions/Account"
+
+        "400":
+          $ref: "#/responses/BadRequestException"
+        "401":
+          $ref: "#/responses/NotAuthorizedException"
+        "403":
+          $ref: "#/responses/ForbiddenException"
+        "404":
+          $ref: "#/responses/NotFoundException"
+        "405":
+          $ref: "#/responses/NotAllowedException"
+        "406":
+          $ref: "#/responses/NotAcceptableException"
+        "415":
+          $ref: "#/responses/NotSupportedException"
+        "500":
+          $ref: "#/responses/InternalServerErrorException"
+        "503":
+          $ref: "#/responses/ServiceUnavailableException"
+
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://accountstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+
+
+
+definitions:
+
+  Account:
+    type: "object"
+    properties:
+      accountId:
+        type: "integer"
+        format: "int64"
+      fullName:
+        type: "string"
+      email:
+        type: "string"
+      newUser:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+      departmentId:
+        type: "integer"
+        format: "int64"
+      positionId:
+        type: "integer"
+        format: "int64"
+      userIdMapping:
+        type: "integer"
+      roles:
+        type: "string"
+        description: "Role account"
+        enum:
+          - "ADMIN"
+          - "USER"
+          - "Team OWner"
+          - "DEPT OWNER"
+
+
+  Category:
+    type: "object"
+    properties:
+      categoryId:
+        type: "integer"
+        format: "int64"
+      type:
+        type: "string"
+      name:
+        type: "string"
+      code:
+        type: "integer"
+      parentId:
+        type: "string"
+
+    xml:
+      name: "Category"
+  Page:
+    type: "object"
+    properties:
+      page:
+        type: "integer"
+      pageSize:
+        type: "integer"
+      totalCount:
+        type: "integer"
+      totalPage:
+        type: "integer"
+      items:
+        type: "array"
+        items:
+          $ref: '#/definitions/Account'
+
+
+
+  Error:
+    type: object
+    properties:
+      status:
+        format: int64
+        readOnly: true
+        type: integer
+        example: 401
+      code:
+        type: string
+        example: DOGOO-100
+      message:
+        type: string
+      developerMessage:
+        type: string
+    required:
+      - code
+      - message
+
+
+responses:
+
+
+
+  # Descriptions of common responses
+  BadRequestException:
+    description: Request body not meet require
+    schema:
+      $ref: "#/definitions/Error"
+
+
+  NotAuthorizedException:
+    description: Authentication failure
+
+    schema:
+      $ref: "#/definitions/Error"
+
+  ForbiddenException:
+    description: Not permitted to access
+    schema:
+      $ref: "#/definitions/Error"
+
+  NotFoundException:
+    description: The specified resource was not found
+    schema:
+      $ref: "#/definitions/Error"
+
+  NotAllowedException:
+    description: HTTP method not supported
+
+    schema:
+      $ref: "#/definitions/Error"
+
+  NotAcceptableException:
+    description: Client media type requested not supported
+
+    schema:
+      $ref: "#/definitions/Error"
+
+  NotSupportedException:
+    description: Client posted media type not supported
+
+    schema:
+      $ref: "#/definitions/Error"
+
+
+  InternalServerErrorException:
+    description: Internal Server Error
+    schema:
+      $ref: "#/definitions/Error"
+
+  ServiceUnavailableException:
+    description: Server is temporarily unavailable or busy
+    schema:
+      $ref: "#/definitions/Error"
+
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

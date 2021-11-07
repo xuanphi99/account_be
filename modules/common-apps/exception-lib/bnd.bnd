@@ -1,4 +1,0 @@
-Bundle-Name: exception-lib
-Bundle-SymbolicName: com.dogoo.exception
-Bundle-Version: 1.0.0
-Export-Package: com.dogoo.exception.api

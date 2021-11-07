@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.dogoo.account">
+<namespace>DG</namespace>
+
+	<entity local-service="true" name="AccountEntry" remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="accountId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="fullName" type="String" />
+		<column name="email" type="String" />
+		<column name="newUser" type="String" />
+		<column name="password" type="String" />
+		<column name="phone" type="String" />
+		<column name="departmentId" type="long" />
+		<column name="positionId" type="long" />
+		<column name="userIdMapping" type="int" />
+		<column name="status" type="String" />
+		<column name="avatarName" type="String" />
+		<column name="avatarPath" type="String" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="fullName" />
+
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="fullName" return-type="Collection">
+			<finder-column name="fullName" />
+		</finder>
+
+		<finder name="UserName" return-type="AccountEntry">
+			<finder-column name="newUser"   />
+		</finder>
+
+
+
+		<finder name="email" return-type="Collection">
+			<finder-column name="email" />
+		</finder>
+
+		<!-- References -->
+
+	</entity>
+
+	<entity local-service="true" name="AccountRoleEntry" remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="AccountRoleId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="AccountId" type="long" />
+		<column name="name" type="String" />
+		<column name="code" type="String" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="code" />
+
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="code" return-type="Collection">
+			<finder-column name="code" />
+		</finder>
+		<finder name="AccountId" return-type="Collection">
+			<finder-column name="AccountId" />
+		</finder>
+
+		<!-- References -->
+
+	</entity>
+
+
+</service-builder>

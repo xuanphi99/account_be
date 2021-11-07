@@ -1,0 +1,3 @@
+Bundle-Name: account-rest-builder-client
+Bundle-SymbolicName: com.dogoo.poc.account.client
+Bundle-Version: 1.0.0

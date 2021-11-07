@@ -1,4 +1,0 @@
-Bundle-Name: pet-mvc
-Bundle-SymbolicName: com.dogoo.poc.pet
-Bundle-Version: 1.0.0
-Export-Package: com.dogoo.poc.pet.constants
